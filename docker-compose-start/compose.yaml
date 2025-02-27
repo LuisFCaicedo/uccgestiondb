@@ -4,5 +4,5 @@ services:
     ports:
       - "8000:5000"
   redis:
-    contaianer_name: db-redis
+    container_name: db-redis
     image: "redis:alpine"
