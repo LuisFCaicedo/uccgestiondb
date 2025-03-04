@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: miusuario
+      POSTGRES_PASSWORD: mipassword
+      POSTGRES_DB: midb
+    ports:
+      - "5432:5432"
+  web:
+    image: python:3.9-slim
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
