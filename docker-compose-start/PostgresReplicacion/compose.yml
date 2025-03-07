@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  postgres_master:
+    image: postgres:latest
+    container_name: postgres_master
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - postgres_master_data:/var/lib/postgresql/data
+      - ./master:/docker-entrypoint-initdb.d
+    networks:
+      - postgres_network
+  postgres_replica:
+    image: postgres:latest
+    container_name: postgres_replica
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    depends_on:
+      - postgres_master
+    volumes:
+      - postgres_replica_data:/var/lib/postgresql/data
+      - ./replica:/docker-entrypoint-initdb.d
+    networks:
+      - postgres_network
+volumes:
+  postgres_master_data:
+  postgres_replica_data:
+networks:
+  postgres_network:
+    driver: bridge
+
