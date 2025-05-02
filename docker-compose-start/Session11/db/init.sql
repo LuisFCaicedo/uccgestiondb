@@ -1,3 +1,4 @@
+
 -- Crear tablas
 CREATE TABLE IF NOT EXISTS cuentas (
     id_cuenta SERIAL PRIMARY KEY,

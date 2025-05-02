@@ -27,7 +27,7 @@ load_dotenv()
 # Definir las variables de entorno
 DB_USER = os.getenv("DB_USER", "admin")
 DB_PASS = os.getenv("DB_PASS", "admin1234")
-DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_HOST = os.getenv("DB_HOST", "banco_postgres")
 DB_NAME = os.getenv("DB_NAME", "banco")
 RUN_TIME = int(os.getenv("RUN_TIME", "30"))
 
